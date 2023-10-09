@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./layout/Main.jsx";
 import Home from "./page/Home.jsx";
 import AddNew from "./page/AddNew";
+import EditCandy from "./page/EditCandy";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,12 @@ const router = createBrowserRouter([
       {
         path: "/add-new",
         element: <AddNew></AddNew>,
+      },
+      {
+        path: "/update-candy/:id",
+        element: <EditCandy></EditCandy>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/update-candy/${params.id}`),
       },
     ],
   },

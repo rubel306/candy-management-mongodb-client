@@ -1,7 +1,9 @@
 import { Link, useLoaderData } from "react-router-dom";
 import TableRow from "../components/TableRow";
+import { useState } from "react";
 const Home = () => {
-  const candies = useLoaderData();
+  const loaCandies = useLoaderData();
+  const [candies, setCandies] = useState(loaCandies);
   return (
     <div>
       <button className="btn btn-outline btn-warning my-6">
@@ -32,7 +34,12 @@ const Home = () => {
           </thead>
           <tbody>
             {candies.map((candy) => (
-              <TableRow key={candy._id} candy={candy}></TableRow>
+              <TableRow
+                key={candy._id}
+                setCandies={setCandies}
+                candies={candies}
+                candy={candy}
+              ></TableRow>
             ))}
           </tbody>
         </table>
